@@ -30,16 +30,19 @@ public class ContactInfoParser {
                 info.id = id;
                 Cursor dataCursor = resolver.query ( datauri, new String[]{
                         "data1", "mimetype"},"raw_contact_id=?",
-                        new String[]{id},null);
+                        new String[]{id}, null);
                 while (dataCursor.moveToNext ()){
                     String data1 = dataCursor.getString ( 0 );
                     String mimetype = dataCursor.getString ( 1 );
                     if ("vnd.android.cursor.item/name".equals ( mimetype )){
                         System.out.println ("姓名="+data1);
+                        info.name = data1;
+                    }else if ("vnd.android.cursor.item/phone_v2".equals ( mimetype )){
+                        System.out.print ( "电话="+data1 );
                         info.phone = data1;
                     }
                 }
-                if (TextUtils.isEmpty ( info.name )&&TextUtils.isEmpty ( info.phone ))
+                if (TextUtils.isEmpty ( info.name ) && TextUtils.isEmpty ( info.phone ))
                     continue;
                 infos.add ( info );
                 dataCursor.close ();

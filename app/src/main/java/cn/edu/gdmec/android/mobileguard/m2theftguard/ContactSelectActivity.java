@@ -52,10 +52,10 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
         mListView = (ListView) findViewById ( R.id.lv_contact );
         new Thread (  ){
             public void run(){
-                systemContacts =ContactInfoParser.getSystemContact ( ContactSelectActivity.this );
+                systemContacts = ContactInfoParser.getSystemContact ( ContactSelectActivity.this );
                 systemContacts.addAll ( ContactInfoParser.getSimContacts ( ContactSelectActivity.this ) );
                 mHandler.sendEmptyMessage ( 10 );
-            }
+            };
         }.start ();
         mListView.setOnItemClickListener ( new AdapterView.OnItemClickListener (){
             @Override
