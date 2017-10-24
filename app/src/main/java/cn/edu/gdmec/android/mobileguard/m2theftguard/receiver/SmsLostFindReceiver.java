@@ -18,6 +18,7 @@ import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.service.GPSLocationService;
 
 /**
+ * 10.22
  * Created by lenovo on 2017/10/23.
  */
 
