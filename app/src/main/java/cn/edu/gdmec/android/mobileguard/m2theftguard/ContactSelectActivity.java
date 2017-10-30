@@ -45,6 +45,8 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
     }
     private void initView(){
         ((TextView) findViewById ( R.id.tv_title )).setText ( "选择联系人" );
+        //补坑
+        //findViewById ( R.id.rl_titlebar ).setBackgroundColor ( getResources ().getColor ( R.color.bright_purple ) );
         ImageView mLeftImgv = (ImageView)findViewById ( R.id.imgv_leftbtn );
         mLeftImgv.setOnClickListener ( this );
         mLeftImgv.setImageResource ( R.drawable.back );
@@ -63,6 +65,8 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
                 ContactInfo item=( ContactInfo ) adapter.getItem ( position );
                 Intent intent=new Intent ();
                 intent.putExtra ( "phone", item.phone );
+                //补坑
+                intent.putExtra ( "name", item.name );
                 setResult ( 0, intent );
                 finish ();
             }
