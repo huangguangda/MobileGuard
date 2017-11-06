@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telecom.TelecomManager;
