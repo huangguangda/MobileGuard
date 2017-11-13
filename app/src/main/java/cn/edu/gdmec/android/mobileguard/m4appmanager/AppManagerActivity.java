@@ -45,12 +45,12 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
 
     private Handler mHandler = new Handler () {
         @Override
-        public void handleMessage(Message msg){
-            switch (msg.what){
+        public void handleMessage( Message msg ){
+            switch ( msg.what ){
                 case 10:
                     if (adapter == null){
                         adapter = new AppManagerAdapter ( userAppInfos, systemAppInfos,
-                                AppManagerActivity.this);
+                                AppManagerActivity.this );
                     }
                     mListView.setAdapter ( adapter );
                     adapter.notifyDataSetChanged ();
@@ -106,11 +106,11 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         mLeftImgv.setOnClickListener ( this );
 
         mLeftImgv.setImageResource ( R.drawable.back );
-        mPhoneMemoryTV = (TextView) findViewById ( R.id.tv_phonememory_appmanager );
-        mSDMemoryTV = (TextView) findViewById ( R.id.tv_appnumber );
-        mAppNumTV = (TextView ) findViewById ( R.id.tv_appnumber );
-        mListView = (ListView) findViewById ( R.id.lv_appmanager );
-        mAbout=(TextView)findViewById(R.id.tv_about_app);
+        mPhoneMemoryTV = ( TextView ) findViewById ( R.id.tv_phonememory_appmanager );
+        mSDMemoryTV = ( TextView ) findViewById ( R.id.tv_appnumber );
+        mAppNumTV = ( TextView ) findViewById ( R.id.tv_appnumber );
+        mListView = ( ListView ) findViewById ( R.id.lv_appmanager );
+        mAbout=( TextView )findViewById( R.id.tv_about_app );
         getMemoryFromPhone();
         initData ();
         initListener();
@@ -140,15 +140,15 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                 if (adapter != null){
                     new Thread (  ){
                         public void run(){
-                            AppInfo mappInfo = (AppInfo) adapter.getItem ( i );
+                            AppInfo mappInfo = ( AppInfo) adapter.getItem ( i );
                             boolean flag = mappInfo.isSelected;
-                            for (AppInfo appInfo : userAppInfos){
+                            for ( AppInfo appInfo : userAppInfos){
                                 appInfo.isSelected = false;
                             }
-                            for (AppInfo appInfo : systemAppInfos){
+                            for ( AppInfo appInfo : systemAppInfos){
                                 appInfo.isSelected = false;
                             }
-                            if (mappInfo != null){
+                            if ( mappInfo != null ){
                                 if (flag){
                                     mappInfo.isSelected = false;
                                 }else {

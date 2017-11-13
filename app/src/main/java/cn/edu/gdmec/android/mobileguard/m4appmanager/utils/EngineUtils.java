@@ -76,9 +76,9 @@ public class EngineUtils {
 
             X509Certificate cert = (X509Certificate) certFactory.generateCertificate ( new ByteArrayInputStream ( sigs[0].toByteArray () ) );
 
-            certMsg+= cert.getIssuerDN ().toString ();
-            certMsg+= cert.getSubjectDN ().toString ();
-            String date=null;
+            certMsg += cert.getIssuerDN ().toString ();
+            certMsg += cert.getSubjectDN ().toString ();
+            String date = null;
             SimpleDateFormat dateformat = new SimpleDateFormat("yyyy年MM月dd号 hh:mm:ss");
             date=dateformat.format(firstInstallTime);
 
@@ -87,19 +87,19 @@ public class EngineUtils {
             String[] permissions = packinfo2.requestedPermissions;
 
             if (permissions != null){
-                for (String str : permissions){
+                for ( String str : permissions ){
                     a.add ( str );
                 }
             }
-            String s = Pattern.compile("\\b([\\w\\W])\\b").matcher(a.toString().substring(1,a.toString().length()-1)).replaceAll(".");
+            String s = Pattern.compile("\\b([\\w\\W])\\b").matcher ( a.toString().substring(1,a.toString().length()-1 )).replaceAll(".");
 
             AlertDialog.Builder builder =new AlertDialog.Builder(context);
             builder.setTitle(appInfo.appName);
-            builder.setMessage("version:"+version+"\n"+
+            builder.setMessage( "version:"+version+"\n"+
                     "Install time:"+"\n"+firstInstallTime+"\n"+
                     "Install time:"+"\n"+date+"\n"+
                     "Certificate issuer:"+certMsg+"\n"+
-                    "Permission:"+"\n"+s);
+                    "Permission:" + "\n" + s );
             builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {

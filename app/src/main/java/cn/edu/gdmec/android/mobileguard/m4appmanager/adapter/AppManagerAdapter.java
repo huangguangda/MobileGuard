@@ -22,7 +22,6 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.EngineUtils;
 /**
  * Created by Jack on 2017/11/5.
  */
-
 public class AppManagerAdapter extends BaseAdapter {
     private List<AppInfo> UserAppInfos;
     private List<AppInfo> SystemAppInfos;
@@ -86,36 +85,36 @@ public class AppManagerAdapter extends BaseAdapter {
         }else {
             viewHolder = new ViewHolder();
             view = View.inflate ( context, R.layout.item_appmanager_list, null );
-            viewHolder.mAppIconImgv = (ImageView ) view.findViewById ( R.id.imgv_appicon );
-            viewHolder.mAppLocationTV = (TextView) view.findViewById ( R.id.tv_appisroom );
-            viewHolder.mAppSizeTV = (TextView) view.findViewById ( R.id.tv_appsize );
-            viewHolder.mAppNameTV = (TextView) view.findViewById ( R.id.tv_appname );
+            viewHolder.mAppIconImgv = ( ImageView ) view.findViewById ( R.id.imgv_appicon );
+            viewHolder.mAppLocationTV = ( TextView ) view.findViewById ( R.id.tv_appisroom );
+            viewHolder.mAppSizeTV = ( TextView ) view.findViewById ( R.id.tv_appsize );
+            viewHolder.mAppNameTV = ( TextView ) view.findViewById ( R.id.tv_appname );
 
-            viewHolder.mLuanchAppTV = (TextView) view.findViewById ( R.id.tv_launch_app );
-            viewHolder.mSettingAppTV = (TextView) view.findViewById ( R.id.tv_setting_app );
-            viewHolder.mShareAppTV = (TextView) view.findViewById ( R.id.tv_share_app );
-            viewHolder.mUninstallTV = (TextView) view.findViewById ( R.id.tv_uninstall_app );
-            viewHolder.mAppOptionLL = (LinearLayout) view.findViewById ( R.id.ll_option_app );
-            viewHolder.mAboutTV=(TextView)view.findViewById(R.id.tv_about_app);
+            viewHolder.mLuanchAppTV = ( TextView ) view.findViewById ( R.id.tv_launch_app );
+            viewHolder.mSettingAppTV = ( TextView ) view.findViewById ( R.id.tv_setting_app );
+            viewHolder.mShareAppTV = ( TextView ) view.findViewById ( R.id.tv_share_app );
+            viewHolder.mUninstallTV = ( TextView ) view.findViewById ( R.id.tv_uninstall_app );
+            viewHolder.mAppOptionLL = ( LinearLayout ) view.findViewById ( R.id.ll_option_app );
+            viewHolder.mAboutTV = ( TextView )view.findViewById( R.id.tv_about_app );
             view.setTag ( viewHolder );
         }
         if (appInfo != null){
-            viewHolder.mAppLocationTV.setText(appInfo.getAppLocation ( appInfo.isInRoom ));
-            viewHolder.mAppIconImgv.setImageDrawable(appInfo.icon);
-            viewHolder.mAppSizeTV.setText ( Formatter.formatFileSize(context, appInfo.appSize) );
-            viewHolder.mAppNameTV.setText(appInfo.appName);
-            if (appInfo.isSelected){
-                viewHolder.mAppOptionLL.setVisibility(View.VISIBLE);
+            viewHolder.mAppLocationTV.setText( appInfo.getAppLocation ( appInfo.isInRoom ));
+            viewHolder.mAppIconImgv.setImageDrawable( appInfo.icon );
+            viewHolder.mAppSizeTV.setText ( Formatter.formatFileSize( context, appInfo.appSize) );
+            viewHolder.mAppNameTV.setText( appInfo.appName );
+            if ( appInfo.isSelected ){
+                viewHolder.mAppOptionLL.setVisibility( View.VISIBLE );
             }else {
-                viewHolder.mAppOptionLL.setVisibility(View.GONE);
+                viewHolder.mAppOptionLL.setVisibility( View.GONE );
             }
         }
-        MyClickListener listener = new MyClickListener(appInfo);
-        viewHolder.mLuanchAppTV.setOnClickListener(listener);
-        viewHolder.mSettingAppTV.setOnClickListener(listener);
-        viewHolder.mShareAppTV.setOnClickListener(listener);
-        viewHolder.mUninstallTV.setOnClickListener(listener);
-        viewHolder.mAboutTV.setOnClickListener(listener);
+        MyClickListener listener = new MyClickListener( appInfo );
+        viewHolder.mLuanchAppTV.setOnClickListener( listener );
+        viewHolder.mSettingAppTV.setOnClickListener( listener );
+        viewHolder.mShareAppTV.setOnClickListener( listener );
+        viewHolder.mUninstallTV.setOnClickListener( listener );
+        viewHolder.mAboutTV.setOnClickListener( listener );
         return view;
     }
     private TextView getTextView(){
@@ -173,3 +172,4 @@ public class AppManagerAdapter extends BaseAdapter {
         }
     }
 }
+

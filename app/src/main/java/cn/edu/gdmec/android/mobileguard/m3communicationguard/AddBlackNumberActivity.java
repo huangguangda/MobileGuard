@@ -26,16 +26,16 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
 
     private void initView(){
         findViewById ( R.id.rl_titlebar ).setBackgroundColor ( getResources ().getColor ( R.color.bright_purple ) );
-        ((TextView) findViewById ( R.id.tv_title )).setText ( "添加黑名单" );
+        (( TextView ) findViewById ( R.id.tv_title )).setText ( "添加黑名单" );
         ImageView mLeftImgv = (ImageView) findViewById ( R.id.imgv_leftbtn );
         mLeftImgv.setOnClickListener ( this );
         mLeftImgv.setImageResource ( R.drawable.back );
 
-        mSmsCB = (CheckBox) findViewById ( R.id.cb_blacknumber_sms );
-        mTelCB = (CheckBox) findViewById ( R.id.cb_blacknumber_tel );
-        mNumET = (EditText) findViewById ( R.id.et_blacknumber );
-        mNameET = (EditText) findViewById ( R.id.et_blackname );
-        mStyleET = (EditText ) findViewById ( R.id.et_blackstyle );
+        mSmsCB = ( CheckBox ) findViewById ( R.id.cb_blacknumber_sms );
+        mTelCB = ( CheckBox ) findViewById ( R.id.cb_blacknumber_tel );
+        mNumET = ( EditText ) findViewById ( R.id.et_blacknumber );
+        mNameET = ( EditText ) findViewById ( R.id.et_blackname );
+        mStyleET = ( EditText ) findViewById ( R.id.et_blackstyle );
         findViewById ( R.id.add_blacknum_btn ).setOnClickListener ( this );
         findViewById ( R.id.add_fromcontact_btn ).setOnClickListener ( this );
     }
@@ -72,7 +72,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                 String name=mNameET.getText ().toString ().trim ();
                 String style=mStyleET.getText ().toString ().trim ();
                 if (TextUtils.isEmpty ( number ) || TextUtils.isEmpty ( name )) {
-                    Toast.makeText ( this, "电话号码和手机号不能为空！", Toast.LENGTH_LONG ).show ();
+                    Toast.makeText ( this, "电话号码,手机号和类型不能为空！", Toast.LENGTH_LONG ).show ();
                     return;
                 } else {
                     BlackContactInfo blackContactInfo=new BlackContactInfo ();
