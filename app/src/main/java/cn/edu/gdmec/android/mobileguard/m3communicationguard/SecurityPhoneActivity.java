@@ -19,48 +19,52 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.adapter.BlackContac
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberDao;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
 
-public class SecurityPhoneActivity extends AppCompatActivity implements View.OnClickListener{
-    private FrameLayout mHaveBlackNumber;
-    private FrameLayout mNoBlackNumber;
-    private BlackNumberDao dao;
-    private ListView mListView;
-    private int pagenumber = 0;
-    //private int pagesize = 4;
-    //补坑
-    private int pagesize = 15;
-    private int totalNumber;
-    private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo> (  );
-    private BlackContactAdapter adapter;
 
-    private void fillData(){
-        dao = new BlackNumberDao ( SecurityPhoneActivity.this );
-        totalNumber = dao.getTotalNumber ();
-        if (totalNumber == 0){
-            //数据库中没有黑名单数据
-            mHaveBlackNumber.setVisibility ( View.GONE );
-            mNoBlackNumber.setVisibility ( View.VISIBLE );
-        }else if (totalNumber > 0){
-            mHaveBlackNumber.setVisibility ( View.VISIBLE );
-            mNoBlackNumber.setVisibility ( View.GONE );
-            pagenumber = 0;
-            if (pageBlackNumber.size () > 0){
-                pageBlackNumber.clear ();
-            }
-            pageBlackNumber.addAll ( dao.getPageBlackNumber ( pagenumber, pagesize ) );
-            if (adapter == null){
-                adapter = new BlackContactAdapter ( pageBlackNumber, SecurityPhoneActivity.this );
-                adapter.setCallBack ( new BlackContactAdapter.BlackConactCallBack (){
-                    @Override
-                    public void DataSizeChanged(){
-                        fillData ();
-                    }
-                } );
-                mListView.setAdapter ( adapter );
-            }else {
-                adapter.notifyDataSetChanged ();
+
+    public class SecurityPhoneActivity extends AppCompatActivity implements View.OnClickListener{
+        private FrameLayout mHaveBlackNumber;
+        private FrameLayout mNoBlackNumber;
+        private BlackNumberDao dao;
+        private ListView mListView;
+        private int pagenumber = 0;
+        //private int pagesize = 4;
+        //补坑
+        private int pagesize = 15;
+        private int totalNumber;
+        private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo> (  );
+        private BlackContactAdapter adapter;
+
+        private void fillData(){
+            dao = new BlackNumberDao ( SecurityPhoneActivity.this );
+            totalNumber = dao.getTotalNumber ();
+            if (totalNumber == 0){
+                //数据库中没有黑名单数据
+                mHaveBlackNumber.setVisibility ( View.GONE );
+                mNoBlackNumber.setVisibility ( View.VISIBLE );
+            }else if ( totalNumber > 0){
+                mHaveBlackNumber.setVisibility ( View.VISIBLE );
+                mNoBlackNumber.setVisibility ( View.GONE );
+                pagenumber = 0;
+                if (pageBlackNumber.size () > 0){
+                    pageBlackNumber.clear ();
+                }
+                pageBlackNumber.addAll ( dao.getPageBlackNumber ( pagenumber, pagesize ) );
+                if (adapter == null){
+                    adapter = new BlackContactAdapter ( pageBlackNumber, SecurityPhoneActivity.this );
+                    adapter.setCallBack ( new BlackContactAdapter.BlackConactCallBack (){
+                        @Override
+                        public void DataSizeChanged(){
+                            fillData ();
+                        }
+                    } );
+                    mListView.setAdapter ( adapter );
+                }else {
+                    adapter.notifyDataSetChanged ();
+                }
             }
         }
-    }
+
+
     private void initView(){
         findViewById ( R.id.rl_titlebar ).setBackgroundColor ( getResources ().getColor ( R.color.bright_purple ) );
         ImageView mLeftImgv = (ImageView) findViewById ( R.id.imgv_leftbtn );
@@ -133,7 +137,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             pagenumber=0;
             pageBlackNumber.clear ();
             pageBlackNumber.addAll ( dao.getPageBlackNumber ( pagenumber, pagesize ) );
-            if (adapter != null) {
+            if ( adapter != null ) {
                 adapter.notifyDataSetChanged ();
             }
         }
