@@ -31,6 +31,7 @@
         android:layout_below="@+id/tv_black_mode"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/view_black_icon"
+        android:text="黑名单类型"
         android:textColor="@color/purple"/>
     <View
         android:id="@+id/view_black_delete"

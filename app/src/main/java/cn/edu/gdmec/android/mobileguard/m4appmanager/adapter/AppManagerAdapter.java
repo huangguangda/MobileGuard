@@ -115,6 +115,7 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mShareAppTV.setOnClickListener( listener );
         viewHolder.mUninstallTV.setOnClickListener( listener );
         viewHolder.mAboutTV.setOnClickListener( listener );
+        
         return view;
     }
     private TextView getTextView(){

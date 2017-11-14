@@ -3,6 +3,7 @@ package cn.edu.gdmec.android.mobileguard.m1home.utils;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Environment;
 import android.webkit.MimeTypeMap;
 
 /**
@@ -21,6 +22,9 @@ public class DownloadUtils {
         request.setVisibleInDownloadsUi(true);
 
         request.setDestinationInExternalPublicDir("/download",targetFile);
+        //request.setDestinationInExternalPublicDir("/data/data/"+context.getPackageName()+"/files/antivirus.db",targetFile);
+        //request.setDestinationInExternalPublicDir( Environment.DIRECTORY_DOWNLOADS,targetFile);
+
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         long mTaskid = downloadManager.enqueue(request);
 

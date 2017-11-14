@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class MD5Utils {
+    //md5摘要的算法
     public static String encode(String text){
         try{
             MessageDigest digest = MessageDigest.getInstance ( "md5" );
@@ -30,7 +31,7 @@ public class MD5Utils {
             return "";
         }
     }
-
+    //获取文件的md5值
     public static String getFileMd5(String path) {
         try {
             MessageDigest digest = MessageDigest.getInstance ( "md5" );

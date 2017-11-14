@@ -42,6 +42,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     private TextView mProcessTV;
     private PackageManager pm;
     private boolean flag;
+
     private boolean isStop;
     private TextView mScanAppTV;
     private Button mCancleBtn;
@@ -59,6 +60,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
             case SCAN_BENGIN:
                 mScanAppTV.setText ( "初始化杀毒引擎中..." );
                 break;
+
             case SCANNING:
                 ScanAppInfo info = (ScanAppInfo) msg.obj;
                 mScanAppTV.setText ( "正在扫描："+info.appName );
@@ -94,12 +96,15 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         initView();
         scanVirus();
     }
+
+    //扫描病毒 使用线程做耗时任务
     private void scanVirus(){
         flag = true;
         isStop = false;
         process = 0;
         mScanAppInfos.clear ();
         new Thread (  ){
+
             public void run(){
                 Message msg = Message.obtain ();
                 msg.what = SCAN_BENGIN;
@@ -112,9 +117,11 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                         return;
                     }
                     String apkpath = info.applicationInfo.sourceDir;
+                    //检查获取这个文件的md5特征码
                     String md5info =MD5Utils.getFileMd5(apkpath);
                     System.out.println (apkpath);
                     System.out.println (md5info);
+
                     AntiVirusDao antiVirusDao = new AntiVirusDao (
                             VirusScanSpeedActivity.this.getApplicationContext () );
                     String result = antiVirusDao.checkVirus ( md5info );
@@ -183,14 +190,19 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.btn_canclescan:
                 if (process == total & process > 0){
+                    //扫描已完成
                     finish ();
                 }else if (process > 0 & process < total & isStop == false){
                     mScanningIcon.clearAnimation ();
+                    //取消扫描
                     flag = false;
+                    //更换背景图片
                     mCancleBtn.setBackgroundResource ( R.drawable.restart_scan_btn );
                 }else if (isStop){
                     startAnim ();
+                    //重新扫描
                     scanVirus ();
+                    //更换背景图片
                     mCancleBtn.setBackgroundResource ( R.drawable.cancle_scan_btn_selector );
                 }
                 break;

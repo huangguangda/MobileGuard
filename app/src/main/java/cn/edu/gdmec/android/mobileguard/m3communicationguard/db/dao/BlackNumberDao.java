@@ -32,7 +32,9 @@ public class BlackNumberDao {
         }
         values.put ( "number", blackContactInfo.phoneNumber );
         values.put ( "name", blackContactInfo.contactName );
+
         values.put ( "style", blackContactInfo.style );
+
         values.put ( "mode", blackContactInfo.mode );
         long rowid = db.insert ( "blacknumber", null, values );
         if (rowid == -1){
@@ -66,6 +68,7 @@ public class BlackNumberDao {
             info.phoneNumber = cursor.getString ( 0 );
             info.mode = cursor.getInt ( 1 );
             info.contactName = cursor.getString ( 2 );
+
             info.style = cursor.getString ( 3 );
             mBlackContactInfos.add ( info );
         }
