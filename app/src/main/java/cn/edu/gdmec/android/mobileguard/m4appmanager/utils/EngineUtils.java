@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -60,6 +61,26 @@ public class EngineUtils {
         }else {
             Toast.makeText ( context, "系统应用无法卸载", Toast.LENGTH_LONG ).show ();
         }
+    }
+    public static void ActApp(Context context,AppInfo appInfo){
+        PackageManager pm1 = context.getPackageManager ();
+        StringBuffer sb = new StringBuffer();
+        ActivityInfo act[] = pm1.getPackageArchiveInfo( appInfo.apkPath, PackageManager.GET_ACTIVITIES).activities;
+        for (int i=0;i<act.length;i++){
+            sb.append(act[i].toString());
+            sb.append("\n");
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder( context );
+        builder.setTitle(appInfo.appName);
+        builder.setMessage( sb );
+        builder.setCancelable( false );
+        builder.setNegativeButton( "确定", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
     public static void AboutApp(Context context,AppInfo appInfo){
         try {
