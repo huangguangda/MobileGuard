@@ -171,7 +171,6 @@ public class VersionUpdateUtils {
                 //下载apk
                 downloadNewApk(versionEntity.apkurl);
                 enterHome();
-
             }
         });
         builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
