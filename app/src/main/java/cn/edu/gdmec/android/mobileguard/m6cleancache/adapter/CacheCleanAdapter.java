@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
 
 /**
@@ -48,7 +49,7 @@ public class CacheCleanAdapter extends BaseAdapter {
         if (view==null){
             holder=new ViewHolder();
             view=View.inflate(context, R.layout.item_cacheclean_list,null);
-            holder.mAppIconImgv=(ImageView ) view.findViewById(R.id.imgv_appicon_cacheclean);
+            holder.mAppIconImgv=(ImageView ) view.findViewById( R.id.imgv_appicon_cacheclean);
             holder.mAppNameTV=(TextView )view.findViewById(R.id.tv_appname_cacheclean);
             holder.mCacheSizeTV=(TextView)view.findViewById(R.id.tv_appsize_cacheclean);
             view.setTag(holder);
