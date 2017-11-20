@@ -37,7 +37,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     protected static final int SCANNING = 101;
     protected static final int SCAN_FINISH = 102;
     private int total;
-    private int process;
+    private int process; 
 
     private TextView mProcessTV;
     private PackageManager pm;

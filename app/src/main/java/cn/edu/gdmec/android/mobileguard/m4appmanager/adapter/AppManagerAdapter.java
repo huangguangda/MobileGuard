@@ -89,6 +89,8 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder.mAppLocationTV = ( TextView ) view.findViewById ( R.id.tv_appisroom );
             viewHolder.mAppSizeTV = ( TextView ) view.findViewById ( R.id.tv_appsize );
             viewHolder.mAppNameTV = ( TextView ) view.findViewById ( R.id.tv_appname );
+            //课堂练习添加活动
+//            viewHolder.mActTV=(TextView)view.findViewById ( R.id.tv_act_app );
 
             viewHolder.mLuanchAppTV = ( TextView ) view.findViewById ( R.id.tv_launch_app );
             viewHolder.mSettingAppTV = ( TextView ) view.findViewById ( R.id.tv_setting_app );
@@ -96,6 +98,8 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder.mUninstallTV = ( TextView ) view.findViewById ( R.id.tv_uninstall_app );
             viewHolder.mAppOptionLL = ( LinearLayout ) view.findViewById ( R.id.ll_option_app );
             viewHolder.mAboutTV = ( TextView )view.findViewById( R.id.tv_about_app );
+            //课堂练习添加活动
+            viewHolder.mActTV =(TextView)view.findViewById ( R.id.tv_act_app );
             view.setTag ( viewHolder );
         }
         if (appInfo != null){
@@ -115,6 +119,8 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mShareAppTV.setOnClickListener( listener );
         viewHolder.mUninstallTV.setOnClickListener( listener );
         viewHolder.mAboutTV.setOnClickListener( listener );
+        //课堂练习添加活动
+        viewHolder.mActTV.setOnClickListener(listener);
         
         return view;
     }
@@ -140,6 +146,8 @@ public class AppManagerAdapter extends BaseAdapter {
         TextView mAppNameTV;
         LinearLayout mAppOptionLL;
         TextView mAboutTV;
+        //课堂练习添加活动
+        TextView mActTV;
     }
     class MyClickListener implements  View.OnClickListener{
         private AppInfo appInfo;
@@ -169,6 +177,9 @@ public class AppManagerAdapter extends BaseAdapter {
                 case R.id.tv_about_app:
                     EngineUtils.AboutApp(context,appInfo);
                     break;
+                //课堂练习添加活动
+                case R.id.tv_act_app:
+                    EngineUtils.ActApp(context,appInfo);
             }
         }
     }

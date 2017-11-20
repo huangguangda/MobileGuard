@@ -17,6 +17,7 @@ public class AppInfo {
     public boolean isUserApp;
     public boolean isSelected = false;
 
+    /**拿到App位置字符串*/
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){
             return "手机内存";

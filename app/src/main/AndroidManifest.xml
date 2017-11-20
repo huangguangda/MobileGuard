@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <!--模块5-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -19,7 +19,9 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
-
+    <!--清除-->
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <!--<uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>-->
 
     <application
         android:name=".App"
@@ -112,6 +114,9 @@
         <activity android:name=".m4appmanager.AppManagerActivity"/>
         <activity android:name=".m5virusscan.VirusScanActivity"/>
         <activity android:name=".m5virusscan.VirusScanSpeedActivity"/>
+        <!--m6-->
+        <activity android:name=".m6cleancache.CleanCacheActivity"/>
+        <activity android:name=".m6cleancache.CacheClearListActivity"/>
 
     </application>
 </manifest>
