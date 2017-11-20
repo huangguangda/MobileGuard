@@ -28,8 +28,11 @@ import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
     private long mExitTime;
+    /** 存储手机防盗密码的sp */
     private SharedPreferences mSharedPreferences;
+    /** 设备管理员 */
     private DevicePolicyManager policyManager;
+    /** 申请权限 */
     private ComponentName componentName;
 
     @Override
@@ -46,9 +49,12 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
+                        // 点击手机防盗
                         if (isSetUpPassword()){
+                            // 弹出输入密码对话框
                             showInterPswdDialog();
                         }else {
+                            // 弹出设置密码对话框
                             showSetUpPswdDialog();
                         }
                         break;
@@ -71,10 +77,15 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+        // 1.获取设备管理员
         policyManager=(DevicePolicyManager) getSystemService ( DEVICE_POLICY_SERVICE );
+        //本行代码需要 "手机防盗模块"完成后才能启用
+        // 2.申请权限, MyDeviceAdminReciever继承自DeviceAdminReceiver
         componentName=new ComponentName ( this, MyDeviceAdminReceiver.class );
+        // 3.判断,如果没有权限则申请权限
         boolean active=policyManager.isAdminActive ( componentName );
         if (!active){
+            //没有管理员的权限，则获取管理员的权限
             Intent intent = new Intent ( DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN );
             intent.putExtra ( DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName );
             intent.putExtra ( DevicePolicyManager.EXTRA_ADD_EXPLANATION, "获得超级管理员权限，用于远程锁屏和清除数据" );
@@ -98,7 +109,9 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
+    /***
+     * 弹出设置密码对话框  本方法需要完成"手机防盗模块"之后才能启用
+     */
     private void showSetUpPswdDialog(){
         final SetUpPasswordDialog setUpPasswrodDialog = new SetUpPasswordDialog ( HomeActivity.this );
         setUpPasswrodDialog.setCallBack ( new SetUpPasswordDialog.MyCallBack (){
@@ -108,8 +121,11 @@ public class HomeActivity extends AppCompatActivity {
                 String affirmPwsd = setUpPasswrodDialog.mAffirmET.getText ().toString ().trim ();
                 if (!TextUtils.isEmpty ( firstPwsd )&&!TextUtils.isEmpty ( affirmPwsd )){
                     if (firstPwsd.equals ( affirmPwsd )){
+                        // 两次密码一致,存储密码
                         savePswd(affirmPwsd);
+
                         setUpPasswrodDialog.dismiss ();
+                        // 显示输入密码对话框
                         showInterPswdDialog();
                     }else {
                         Toast.makeText ( HomeActivity.this, "两次密码不一致！", Toast.LENGTH_LONG ).show();
