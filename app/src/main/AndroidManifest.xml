@@ -5,9 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!--模块5-->
+    <!--手机杀毒部分-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <!--m1-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
@@ -15,7 +17,7 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <uses-permission android:name="android.permission.READ_SMS"/>
-    <!--通讯卫士部分-->
+    <!--m3通讯卫士部分-->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
@@ -32,14 +34,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".SplashActivity"> -->
-        <activity android:name=".m1home.HomeActivity">
+         <activity android:name=".SplashActivity">
+        <!--<activity android:name=".m1home.HomeActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".m1home.HomeActivity"/>
+
         <activity android:name=".m2theftguard.LostFindActivity">
         </activity>
         <activity android:name=".m2theftguard.Setup1Activity"/>
@@ -117,6 +122,24 @@
         <!--m6-->
         <activity android:name=".m6cleancache.CleanCacheActivity"/>
         <activity android:name=".m6cleancache.CacheClearListActivity"/>
+
+        <!--m8-->
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
+        <service
+            android:name=".m8trafficmonitor.service.TrafficMonitoringService"
+            android:enabled="true"
+            android:exported="true"
+            android:persistent="true"/>
+        <receiver android:name=".m8trafficmonitor.reciver.BootCompleteReciever"
+                  android:enabled="true"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+
+        </receiver>
+
 
     </application>
 </manifest>
