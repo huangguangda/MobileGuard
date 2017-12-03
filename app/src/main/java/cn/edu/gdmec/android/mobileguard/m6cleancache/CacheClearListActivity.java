@@ -84,6 +84,8 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar ().hide (); //去掉标题栏
+
         setContentView( R.layout.activity_cache_clear_list);
         pm=getPackageManager();
         initView();

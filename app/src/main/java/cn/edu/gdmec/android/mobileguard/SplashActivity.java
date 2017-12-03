@@ -31,6 +31,8 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
         final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this,downloadCallback,HomeActivity.class);
+
+
         new Thread(){
             @Override
             public void run(){
@@ -51,7 +53,7 @@ public class SplashActivity extends AppCompatActivity {
         }.start();*/
 
         //老师
-       /* startActivity(new Intent (this, HomeActivity.class));
-        finish();*/
+        startActivity(new Intent (this, HomeActivity.class));
+        finish();
     }
 }

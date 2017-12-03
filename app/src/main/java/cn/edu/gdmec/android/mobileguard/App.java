@@ -42,7 +42,7 @@ public class App extends Application {
             String realsim = tm.getSimSerialNumber ();
             //因为虚拟机无法更换sim卡，所以使用虚拟机测试要有此代码，真机测试要注释这段代码。
             //realsim="999";
-            realsim = "999";
+            //realsim = "999";
             if (bindsim.equals ( realsim )){
                 Log.i ( "", "sim卡未发生变化，还是您的手机" );
             }else {

@@ -4,26 +4,27 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--模块5-->
-    <!--手机杀毒部分-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--m1-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-
     <uses-permission android:name="android.permission.READ_SMS"/>
     <!--m3通讯卫士部分-->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
-    <!--清除-->
+    <!--模块5-->
+    <!--手机杀毒部分-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--清除缓存清理部分-->
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
     <!--<uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>-->
+    <!--m9advancedtools permission-->
+   <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>-->
+
 
     <application
         android:name=".App"
@@ -34,8 +35,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".SplashActivity">-->
-        <activity android:name=".m1home.HomeActivity">
+         <activity android:name=".SplashActivity">
+        <!--<activity android:name=".m1home.HomeActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -43,7 +44,7 @@
             </intent-filter>
         </activity>
 
-        <!--<activity android:name=".m1home.HomeActivity"/>-->
+        <activity android:name=".m1home.HomeActivity"/>
 
         <activity android:name=".m2theftguard.LostFindActivity">
         </activity>
@@ -138,6 +139,16 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+
+        <!--m9-->
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity"/>
+        <activity android:name=".m9advancedtools.AppLockActivity"/>
+        <activity android:name=".m9advancedtools.EnterPswActivity"/>
+        <activity android:name=".m9advancedtools.NumBelongtoActivity"/>
+        <activity android:name=".m9advancedtools.SMSBackupActivity"/>
+        <activity android:name=".m9advancedtools.SMSReducitionActivity"/>
+        <service android:name=".m9advancedtools.service.AppLockService"
+                  android:persistent="true"/>
 
 
     </application>
