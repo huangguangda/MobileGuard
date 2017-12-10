@@ -19,8 +19,8 @@ public class AppLockDao {
     /** 程序锁数据库操作逻辑类 */
     private Context context;
     private AppLockOpenHelper openHelper;
-    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.applock");
-
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
+    //private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
     public AppLockDao(Context context) {
         this.context = context;
         openHelper = new AppLockOpenHelper(context);

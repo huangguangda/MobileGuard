@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
+import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m9advancedtools.utils.AppInfoParser;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.entity.AppInfo;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.utils.AppInfoParser;
 
 /**
  * Created by Jack on 2017/12/3.
@@ -30,13 +31,14 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.entity.AppInfo;
 
 
 public class AppLockFragment extends Fragment {
-
+    private Context context;
     private TextView mLockTV;
     private ListView mLockLV;
     private AppLockDao dao;
     List<AppInfo> mLockApps = new ArrayList<AppInfo> ();
     private AppLockAdapter adapter;
-    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.applock");
+    //private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -55,6 +57,12 @@ public class AppLockFragment extends Fragment {
         };
     };
     private List<AppInfo> appInfos;
+//模块
+    @Override
+    public void onAttach(Context context){
+        super.onAttach ( context );
+        this.context = context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
