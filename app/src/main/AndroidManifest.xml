@@ -17,7 +17,7 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
     <!--模块5-->
-    <!--手机杀毒部分-->
+    <!--手机杀毒部分sdk-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--清除缓存清理部分-->
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
