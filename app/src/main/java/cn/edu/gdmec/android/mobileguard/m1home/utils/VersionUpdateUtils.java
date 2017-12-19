@@ -31,9 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
-import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
@@ -80,18 +78,18 @@ public class VersionUpdateUtils {
                     showUpdateDialog(versionEntity);
                     break;
                 case MESSAGE_ENTERHOME:
-                    Intent intent = new Intent(context, HomeActivity.class);
+                    /*Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity ( intent );
-                    context.finish ();
+                    context.finish ();*/
                     /*Intent intent = new Intent ( context, VirusScanActivity.class );
                     context.startActivity(intent);
                     context.finish();*/
                     //老师模块5
-                   /* if(nextActivty!=null) {
+                   if(nextActivty!=null) {
                         Intent intent = new Intent(context, nextActivty);
                         context.startActivity(intent);
                         context.finish();
-                    }*/
+                    }
                     break;
             }
         }
