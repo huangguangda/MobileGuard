@@ -70,7 +70,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         }.start();*/
 
-        //老师
+        //老师没有这个出现了  欢迎界面
 //        startActivity(new Intent (this, HomeActivity.class));
 //        finish();
     }
