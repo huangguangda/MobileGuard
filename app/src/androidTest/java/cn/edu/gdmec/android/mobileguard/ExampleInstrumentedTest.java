@@ -747,6 +747,11 @@ public class ExampleInstrumentedTest {
         result = mDevice.findObject(new UiSelector().className("android.widget.ImageView").instance(2));
         result.click();
         sleep(1000);
+        result = mDevice.findObject(new UiSelector().className("android.widget.EditText"));
+        result.setText("1");
+        result = mDevice.findObject(new UiSelector().className("android.widget.ImageView").instance(2));
+        result.click();
+        sleep(1000);
         result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
         if(!result.exists()){
             throw new Exception("Can't lock App1.");
@@ -787,7 +792,7 @@ public class ExampleInstrumentedTest {
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
         UiScrollable  appList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
-        appList.scrollForward(20);
+        appList.scrollForward(30);
         result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("活动"));
@@ -808,10 +813,10 @@ public class ExampleInstrumentedTest {
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("云查杀"));
         result.clickAndWaitForNewWindow();
-        result = mDevice.findObject(new UiSelector().className("android.widget.Button"));
-        result.clickAndWaitForNewWindow();
+        //result = mDevice.findObject(new UiSelector().className("android.widget.Button"));
+        //result.clickAndWaitForNewWindow();
         UiScrollable  appList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
-        appList.flingToBeginning(5);
+        appList.flingToBeginning(30);
         UiObject result = appList.getChildByText(new UiSelector().className("android.widget.TextView"),"App2(fake virus.)",true);
         if(!result.exists()){
             throw new Exception("Can't find cloud scan virus.");
